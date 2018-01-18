@@ -6,6 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bugs": {
+    "url": "https://github.com/salamonrafal/cocospolitan/issues",
+    "email": "rasa@salamonrafal.pl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salamonrafal/cocospolitan.git"
+  },
   "keywords": [
     "cocospolitan",
     "react",
@@ -13,5 +21,18 @@
     "webpack"
   ],
   "author": "Rafał G. Salamon",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.12.1",
+    "react": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "redux-devtools": "^3.4.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
+  }
 }
