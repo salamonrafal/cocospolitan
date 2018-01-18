@@ -1,0 +1,17 @@
+{
+  "name": "cocospolitan",
+  "version": "0.0.1",
+  "description": "Cocospolitan web page",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cocospolitan",
+    "react",
+    "redux",
+    "webpack"
+  ],
+  "author": "Rafał G. Salamon",
+  "license": "MIT"
+}
