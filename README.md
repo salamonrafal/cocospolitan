@@ -1,5 +1,11 @@
 # COCOSPOLITAN
 
+* [Instalation](#instalation)
+    * [Clone from GIT](#clone-from-git)
+    * [Install packages](#install-packages) 
+    * [Build](#build)  
+    * [Rest API for development](#rest-api-for-development)
+
 ## Instalation
 ### Clone from GIT
 
@@ -17,4 +23,10 @@ npm i
 
 ```bash
 npm run build:production
+```
+
+### Rest API for development
+
+```bash
+npm run start:api
 ```
