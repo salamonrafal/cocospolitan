@@ -1,4 +1,10 @@
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSass = new ExtractTextPlugin({
+  filename: "/css/[name].css",
+  disable: process.env.NODE_ENV === "dev"
+});
 
 module.exports = {
   entry: "../src/index.js",
@@ -17,6 +23,20 @@ module.exports = {
             options: {
                 presets: ['es2015']
             }
+        },
+        {
+          test: /\.scss$/,
+          use: extractSass.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: "css-loader" // translates CSS into CommonJS
+              }, 
+              {
+                loader: "sass-loader" // compiles Sass to CSS
+              }
+            ]
+          })
         } 
     ]
 
@@ -40,6 +60,6 @@ module.exports = {
   stats: "errors-only",
   
   plugins: [
-
+    extractSass
   ],
 }
