@@ -1,18 +1,20 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
 const extractSass = new ExtractTextPlugin({
   filename: "/css/[name].css",
   disable: process.env.NODE_ENV === "dev"
 });
 
-
 module.exports = {
-  entry: "../src/index.js",
+  context: path.join(__dirname, '../src'),
+  entry: { 
+    app: "./index.js"
+  },
   output: {
-    path: path.resolve(__dirname, "../public/assets"), // string
+    path: path.resolve(__dirname, "../public/assets"),
     filename: "bundle.js",
-    publicPath: "../public/"
   },
 
   module: {
@@ -22,11 +24,13 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             options: {
-                presets: ['es2015']
+                presets: ['es2015', 'react']
             }
         },
+
         {
           test: /\.scss$/,
+          exclude: /node_modules/,
           use: extractSass.extract({
             fallback: 'style-loader',
             use: [
@@ -40,37 +44,26 @@ module.exports = {
           })
         }  
     ]
-
   },
 
-  performance: {
-    hints: "warning", // enum
-    maxAssetSize: 200000, // int (in bytes),
-    maxEntrypointSize: 400000, // int (in bytes)
-    assetFilter: function(assetFilename) {
-      // Function predicate that provides asset filenames
-      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
-    }
-  },
 
   devtool: "source-map", 
-  context: __dirname,
+  
   target: "web",
-  externals: ["react", /^@angular\//],
  
   stats: "errors-only",
-
-  DevServer: {
+  node: {
+    fs: "empty"
+  },
+  devServer: {
     contentBase: path.join(__dirname, "../public"),
-    compress: true,
     index: 'index.html',
-    lazy: false,
     open: true,
-    watchContentBase: true,
+    inline: true,
     port: 8080
   },
 
   plugins: [
     extractSass
-  ],
+  ]
 }

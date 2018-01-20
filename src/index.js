@@ -1,7 +1,21 @@
-import style from './index.scss';
+// Default import
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-let helloText = '<div class="hello"><p>Welcome</p> <p>COCOSPOLITAN web page</p></div>';
+// Import containers
+import App from './containers/App'; 
 
-let $rootApp = document.getElementById('rootApp');
+// Import Store configuration
+import configureStore from './redux/stores'; 
 
-$rootApp.innerHTML = helloText;
+const store = configureStore(); 
+const ROOT_ELEMENT_ID = 'rootApp';
+
+
+render( 
+    <Provider store={store}> 
+       <App />
+    </Provider>, 
+    document.getElementById(ROOT_ELEMENT_ID) 
+);
