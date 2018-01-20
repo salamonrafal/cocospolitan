@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-
-
+import {connect} from 'react-redux';  
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-
-    // this.state = {}
-
-    // const App = (this: any)
-    // App.onEvent = this.onEvent.bind(this)
-  }
-
-  render () {
-    return (
-        <div>
-            Here is test
-        </div>
-    )
-  };
+    render () {
+        return (
+            <div>
+                {this.props.text}
+            </div>
+        )
+    };
 }
 
-export default App
+function mapStateToProps(state, ownProps) {  
+    return {
+        
+    };
+}
+
+function mapDispatchToProps(dispatch) {  
+    return {
+        
+    };
+}     
+
+export default connect(mapStateToProps, mapDispatchToProps)(App); 

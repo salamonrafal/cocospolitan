@@ -15,7 +15,7 @@ const ROOT_ELEMENT_ID = 'rootApp';
 
 render( 
     <Provider store={store}> 
-       <App />
+       <App text={'TEST'} />
     </Provider>, 
     document.getElementById(ROOT_ELEMENT_ID) 
 );
