@@ -4,7 +4,11 @@
   "description": "Cocospolitan web page",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:production": "webpack --config ./config/webpack.config.prod.js --env.NODE_ENV=prod",
+    "build:develop": "webpack --config ./config/webpack.config.prod.js --env.NODE_ENV=dev",
+    "start:server": "node_modules/.bin/webpack-dev-server --config ./config/webpack.config.dev.js --color --compress --content-base ./public --open --env.NODE_ENV=dev",
+    "start:api": "json-server --watch ./scripts/api/db.json --port 3004"
   },
   "bugs": {
     "url": "https://github.com/salamonrafal/cocospolitan/issues",
@@ -23,15 +27,24 @@
   "author": "Rafał G. Salamon",
   "license": "MIT",
   "dependencies": {
-    "json-server": "^0.12.1",
-    "react": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
-  },
-  "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "json-server": "^0.12.1",
+    "node-sass": "^4.7.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
+    "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.0"
   }

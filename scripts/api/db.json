@@ -1,0 +1,33 @@
+{
+    "headlines" : [
+        {
+            "id": "h1",
+            "content": "<p><span class=\"text-style-color2 text-style-size-big\"><span class=\"text-style-underline\">Test</span>: Czy jesteś kokosem czy SOWĄ?</span> <br /> <span class=\"text-style-color1 text-style-size-medium\">Sprawdź to!</span></p>"
+        },
+
+        {
+            "id": "h2",
+            "content": "<p><span class=\"text-style-color3 text-style-size-big\">Co słychać w Gutenbergu?</span> <br /> <span class=\"text-style-color4 text-style-size-medium\">My to wiemy!</span></p>"
+        },
+
+        {
+            "id": "h3",
+            "content": "<p><span class=\"text-style-color5 text-style-size-big\">Koko orszak, gdzie i kiedy?</span> <br /> <span class=\"text-style-color6 text-style-size-medium\">Zobacz rozkład</span></p>"
+        },
+
+        {
+            "id": "h4",
+            "content": "<p><span class=\"text-style-color7 text-style-size-huge\">Totalny szok!!</span> <br /> <span class=\"text-style-color8 text-style-size-medium\">Kokos przebrany za żółwia.</span></p>"
+        },
+
+        {
+            "id": "h5",
+            "content": "<p><span class=\"text-style-color8 text-style-size-huge\">Tylko u nas AMA z Towerem</span></p>"
+        },
+
+        {
+            "id": "h6",
+            "content": "<p><span class=\"text-style-color8 text-style-size-medium\">Wiemy jak uspokoić rafcia</span></p>"
+        }
+    ]
+}
