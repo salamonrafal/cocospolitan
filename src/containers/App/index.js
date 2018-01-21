@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import GeneralLayout from '../../components/Layouts/General';
+import Style from './app.scss';
 
 class App extends Component {
 
     render () {
         return (
-                <GeneralLayout />
+            <GeneralLayout />
         )
     };
 }
