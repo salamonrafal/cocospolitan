@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';  
+import {connect} from 'react-redux';
+
+import GeneralLayout from '../../components/Layouts/General';
 
 class App extends Component {
 
     render () {
         return (
-            <div>
-                {this.props.text}
-            </div>
+                <GeneralLayout />
         )
     };
 }
