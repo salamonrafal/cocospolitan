@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
 const extractSass = new ExtractTextPlugin({
   filename: "/css/[name].css",
@@ -13,7 +14,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../public/assets"),
-    filename: "bundle.js"
+    filename: "bundle.min.js"
   },
 
   module: {
@@ -26,6 +27,13 @@ module.exports = {
                 presets: ['es2015', 'react']
             }
         },
+
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i, 
+          exclude: /node_modules/,
+          loader: "file-loader?name=images/[hash].[ext]&publicPath=assets/"
+        },
+
         {
           test: /\.scss$/,
           exclude: /node_modules/,
@@ -48,8 +56,20 @@ module.exports = {
   devtool: "source-map", 
   target: "web",
   stats: "errors-only",
+
+  performance: {
+    hints: "warning"
+  },
   
   plugins: [
-    extractSass
+    extractSass,
+    
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
   ]
 }

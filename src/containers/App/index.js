@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
-
+import GeneralLayout from '../../components/Layouts/General';
+import Style from './app.scss';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-
-    // this.state = {}
-
-    // const App = (this: any)
-    // App.onEvent = this.onEvent.bind(this)
-  }
-
-  render () {
-    return (
-        <div>
-            Here is test
-        </div>
-    )
-  };
+    render () {
+        return (
+            <GeneralLayout />
+        )
+    };
 }
 
-export default App
+function mapStateToProps(state, ownProps) {  
+    return {
+        
+    };
+}
+
+function mapDispatchToProps(dispatch) {  
+    return {
+        
+    };
+}     
+
+export default connect(mapStateToProps, mapDispatchToProps)(App); 
