@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
+const WebpackCleanupPlugin = require ('webpack-cleanup-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: "/css/[name].css",
@@ -62,6 +63,12 @@ module.exports = {
   },
   
   plugins: [
+
+    new WebpackCleanupPlugin({
+      quiet: true,
+      exclude: ['css/*']
+    }),
+
     extractSass,
     
     new webpack.optimize.UglifyJsPlugin({
@@ -70,6 +77,6 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
-    })
+    })    
   ]
 }
