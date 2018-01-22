@@ -27,6 +27,13 @@ module.exports = {
                 presets: ['es2015', 'react']
             }
         },
+
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i, 
+          exclude: /node_modules/,
+          loader: "file-loader?name=images/[hash].[ext]&publicPath=assets/"
+        },
+
         {
           test: /\.scss$/,
           exclude: /node_modules/,
@@ -49,6 +56,10 @@ module.exports = {
   devtool: "source-map", 
   target: "web",
   stats: "errors-only",
+
+  performance: {
+    hints: "warning"
+  },
   
   plugins: [
     extractSass,

@@ -27,6 +27,12 @@ module.exports = {
                 presets: ['es2015', 'react']
             }
         },
+        
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i, 
+          exclude: /node_modules/,
+          loader: "file-loader?name=images/[name].[ext]&publicPath=assets/"
+        },
 
         {
           test: /\.scss$/,
@@ -48,13 +54,17 @@ module.exports = {
 
 
   devtool: "source-map", 
-  
   target: "web",
- 
-  stats: "errors-only",
+  stats: "verbose",
+
   node: {
     fs: "empty"
   },
+
+  performance: {
+    hints: "warning"
+  },
+
   devServer: {
     contentBase: path.join(__dirname, "../public/"),
     index: 'index_dev.html',
