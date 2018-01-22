@@ -4,7 +4,7 @@
   "description": "Cocospolitan web page",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start ./config/karma.conf.js",
     "build:production": "webpack --config ./config/webpack.config.prod.js --env.NODE_ENV=prod",
     "build:develop": "webpack --config ./config/webpack.config.dev.js --env.NODE_ENV=dev",
     "start:server": "node_modules/.bin/webpack-dev-server --config ./config/webpack.config.dev.js --color --compress --content-base ./public --open --env.NODE_ENV=dev",
@@ -22,7 +22,9 @@
     "cocospolitan",
     "react",
     "redux",
-    "webpack"
+    "webpack",
+    "karma",
+    "jasmine"
   ],
   "author": "Rafał G. Salamon",
   "license": "MIT",
@@ -36,7 +38,11 @@
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
+    "jasmine-core": "^2.9.1",
     "json-server": "^0.12.1",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
     "node-sass": "^4.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
