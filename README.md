@@ -50,10 +50,10 @@ npm run start:server
 
 Then you need to open index file for development:
 ```
-    http://localhost:8080/index_dev.html
+http://localhost:8080/index_dev.html
 ```
 
 ### Unit tests
 ```bash
-    npm test
+npm test
 ```
