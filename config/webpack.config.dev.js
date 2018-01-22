@@ -56,8 +56,11 @@ module.exports = {
     fs: "empty"
   },
   devServer: {
-    contentBase: path.join(__dirname, "../public"),
-    index: 'index.html',
+    contentBase: path.join(__dirname, "../public/"),
+    index: 'index_dev.html',
+    historyApiFallback: {
+      index: 'index_dev.html',
+    },
     open: true,
     inline: true,
     port: 8080

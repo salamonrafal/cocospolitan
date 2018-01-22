@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
 const extractSass = new ExtractTextPlugin({
   filename: "/css/[name].css",
@@ -13,7 +14,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../public/assets"),
-    filename: "bundle.js"
+    filename: "bundle.min.js"
   },
 
   module: {
@@ -50,6 +51,14 @@ module.exports = {
   stats: "errors-only",
   
   plugins: [
-    extractSass
+    extractSass,
+    
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
   ]
 }
