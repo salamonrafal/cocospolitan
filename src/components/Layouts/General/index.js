@@ -13,8 +13,13 @@ class LayoutGeneral extends Component {
                     <HeaderLayout />
                 </div>
 
-                <div className={'container-body'}></div>
-                <div className={'container-footer'}></div>
+                <div className={'container-body'}>
+
+                </div>
+
+                <div className={'container-footer'}>
+                
+                </div>
             </div>
         );
     }
