@@ -1,7 +1,13 @@
 .container {
     display: block;
+    max-width: 100%;
+    margin: 0px auto;
 }
 
 .container-header, .container-body, .container-footer {
     display: block;
+}
+
+.container-header {
+    background-color: #ED037C
 }

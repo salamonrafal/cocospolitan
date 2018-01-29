@@ -83,7 +83,10 @@ module.exports = {
     new WebpackCleanupPlugin({
       preview: true,
       exclude: ['css/*']
-    })
+    }),
 
+    new webpack.DefinePlugin({
+      '__ENV__': JSON.stringify('develop')
+    })
   ]
 }

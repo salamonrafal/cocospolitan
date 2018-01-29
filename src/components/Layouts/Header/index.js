@@ -7,7 +7,12 @@ class LayoutHeader extends Component {
     render() {
         return (
             <div className={'header-body'}>
-                <img src={LogoHeader} width="768" title="COCOSPOLITAN" className={'image-logo'} />
+                <div className={'header-text_top'}>
+                    <span className={'text-top_sentence'}>Koksić każdy może, ale my to robimy najabrdziej</span>
+                </div>
+                <div className={'header-logo'}>
+                    <img src={LogoHeader} width="768" title="COCOSPOLITAN" className={'image-logo'} />
+                </div>
             </div>
         );
     }
