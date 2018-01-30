@@ -1,14 +1,17 @@
-import Api from './api.js';
-
-export const LOADED_HEADLINES = Symbol('LOADED_HEADLINES');
 export const SET_HEADLINES = Symbol('SET_HEADLINES');
-export const SEARCH_HEADLINES = Symbol('SEARCH_HEADLINES');
+export const SET_APPLICATION_CONFIG = Symbol('SET_APPLICATION_CONFIG');
 
-export const setHeadlines = (value) => ({
-    type: SET_HEADLINES,
-    payload: value
-});
 
-export const loadHeadlines = () => ({
-    type: LOADED_HEADLINES
-});
+export function setHeadlines(headlines) {
+    return {
+        type: SET_HEADLINES,
+        payload: headlines
+    }
+}
+
+export function setApplicationConfig (config) {
+    return {
+        type: SET_APPLICATION_CONFIG,
+        payload: config,
+    }
+}

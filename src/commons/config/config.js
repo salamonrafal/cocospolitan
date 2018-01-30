@@ -9,14 +9,12 @@ class Config {
         this.loadDefault();
 
         if (env === 'develop') {
-            console.log('In');
             this.loadDevelop();
         }
     }
 
     loadDefault() {
         this.config = DefaultConfig;
-        
     }
 
     loadDevelop() {
@@ -33,8 +31,6 @@ class Config {
                 throw 'Cannot find config!';
             }
         }
-
-        console.log(args);
 
         return value;
     }
