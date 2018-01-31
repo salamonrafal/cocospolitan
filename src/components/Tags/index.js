@@ -13,7 +13,17 @@ class Tags extends Component {
         return (
             <div className={'taglist-container'}>
                 <ul className={'taglist-items'}>
-                    {tags.map((tags, i) => <TagItem key={i} tagIndex={i} tag={tags} isLast={ i >= (len -1) ? true : false} /> )}
+                    {tags.map((tags, i) => 
+                        <TagItem 
+                            key={i} 
+                            tagIndex={i} 
+                            tag={tags} 
+                            headlines={this.props.headlines} 
+                            onClickTagItem={this.props.onClickTagItem} 
+                            isLast={ i >= (len -1) ? true : false} 
+                            activeTag={this.props.activeTag}
+                        /> 
+                    )}
                 </ul>
             </div>
         );

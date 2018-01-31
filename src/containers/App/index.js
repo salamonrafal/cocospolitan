@@ -20,7 +20,8 @@ class App extends Component {
     requestHeadlines () {
         axios.get(this.config.getConfig('services', 'headlines', 'get'))
             .then(res => {
-                this.props.setHeadlinesDataApp(res.data);
+                let headlines = new Headlines(res.data);
+                this.props.setHeadlinesDataApp(headlines);
             });
     }
 
@@ -29,11 +30,12 @@ class App extends Component {
         this.requestHeadlines();
     }
 
-    render () {        
-        let headlines = new Headlines(this.props.headlines);
-
+    render () {
         return (
-            <GeneralLayout config={this.props.config} headlines={headlines} />
+            <GeneralLayout 
+                config={this.props.config} 
+                headlines={this.props.headlines} 
+            />
         )
     };
 }

@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import appReducers from '../../containers/App/reducers';
+import AppReducers from '../../containers/App/reducers';
+import TagListReducers from '../../containers/TagList/reducers';
 
 export const makeRootReducer = () => {
     return combineReducers({
-        app: appReducers
+        app: AppReducers,
+        tagList: TagListReducers
     })
 }
 

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Style from './taglist.scss';
 
 import Tags from '../../components/Tags';
-import {} from './actions.js';
+import { selectTag } from './actions.js';
 
 
 class TagList extends Component {
@@ -23,7 +23,12 @@ class TagList extends Component {
 
         return (
             <div className={'taglist-wrapper'}>
-                <Tags tags={tags} />
+                <Tags 
+                    tags={tags}
+                    headlines={this.props.headlines}
+                    onClickTagItem={this.props.onClickSelectTag}  
+                    activeTag={this.props.activeTag}
+                />
             </div>
         );
 
@@ -32,14 +37,16 @@ class TagList extends Component {
 
 function mapStateToProps(state, ownProps) {  
     return {
-        config: state.app.config
+        config: state.app.config,
+        headlines: state.app.headlines,
+        activeTag: state.tagList.activeTag
     };
 }
 
 function mapDispatchToProps(dispatch) {  
     return {
-        loadHedlines () {
-            dispatch(this.loadDataBefore());
+        onClickSelectTag (activeTag, headlines) {
+             dispatch(selectTag(headlines, activeTag));
         }
     };
 }     

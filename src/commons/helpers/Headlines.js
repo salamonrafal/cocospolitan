@@ -24,7 +24,8 @@ class Headlines {
 
         for (let i = 0; i < data.length; i++) {
             headlines[data[i].id] = data[i];
-
+            headlines[data[i].id].index = i;
+            
             this.tags.appendTags(data[i].tags, data[i].id)
         }
 
