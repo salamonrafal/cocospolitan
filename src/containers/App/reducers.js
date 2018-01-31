@@ -1,10 +1,11 @@
 
 import { SET_APPLICATION_CONFIG, SET_HEADLINES } from './actions.js';
 import Config from '../../commons/config/config.js';
+import Headlines from '../../commons/helpers/Headlines';
 
 let defaultState = {
-    headlines: [],
-    config: {}
+    headlines: {},
+    config: new Config('production')
 };
 
 export default function(state = defaultState, action) {

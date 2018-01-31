@@ -1,0 +1,48 @@
+.taglist-container {
+    width: 800px;
+    display: block;
+    margin: 0px auto;
+    text-align: left;
+    color: #FFF;
+}
+
+.taglist-wrapper {
+    display: block;
+    background: #4C4C4C;
+}
+
+.taglist-items {
+    display: inline-block;
+    list-style: none;
+    padding: 5px;
+    margin: 0px auto;
+
+    li:first-child {
+        margin-left: 25px;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0px;
+        padding: 0px 0px 0px 5px;
+    }
+}
+
+.taglist-item {
+    a {
+        color: #FFF;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ED037C;
+    }
+
+    .item-separator {
+        font-weight: normal;
+        font-size: 16px;
+        font-family: monospace;
+    }
+}

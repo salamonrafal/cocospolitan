@@ -7,6 +7,7 @@ import Style from './app.scss';
 
 import {setHeadlines, setApplicationConfig} from './actions.js';
 import Config from '../../commons/config/config.js';
+import Headlines from '../../commons/helpers/Headlines.js';
 
 class App extends Component {
 
@@ -29,8 +30,10 @@ class App extends Component {
     }
 
     render () {        
+        let headlines = new Headlines(this.props.headlines);
+
         return (
-            <GeneralLayout config={this.props.config} headlines={this.props.headlines} />
+            <GeneralLayout config={this.props.config} headlines={headlines} />
         )
     };
 }

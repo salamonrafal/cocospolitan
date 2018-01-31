@@ -1,5 +1,5 @@
-export const SET_HEADLINES = Symbol('SET_HEADLINES');
-export const SET_APPLICATION_CONFIG = Symbol('SET_APPLICATION_CONFIG');
+export const SET_HEADLINES = 'SET_HEADLINES';
+export const SET_APPLICATION_CONFIG = 'SET_APPLICATION_CONFIG';
 
 
 export function setHeadlines(headlines) {
