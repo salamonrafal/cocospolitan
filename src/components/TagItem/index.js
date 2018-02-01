@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Style from './taglist.scss';
+import Style from './tagitem.scss';
 
 // import { topText } from '../../../commons/labels/TagList.js';
 
