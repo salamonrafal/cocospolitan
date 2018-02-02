@@ -21,7 +21,7 @@ class LayoutGeneral extends Component {
                     <div className={'column-wrapper'}>
 
                         <div className={'container-left-column'}>
-                            <HeadlinesList headlines = {this.props.headlines} />
+                            <HeadlinesList headlines = {this.props.headlines} refreshHeadlines = {this.props.refreshHeadlines} activeTag = {this.props.activeTag}  />
                         </div>
                         
                         <div className={'container-right-column'}>

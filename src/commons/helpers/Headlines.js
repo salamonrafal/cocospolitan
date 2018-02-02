@@ -3,7 +3,7 @@ import TagsItems from './TagsItems.js';
 class Headlines {
     constructor (data) {
         this.tags = new TagsItems();
-        this.headlines = this.transformData(data);
+        this.headlines = this._transformData(data);
         
     }
 
@@ -15,11 +15,47 @@ class Headlines {
         return this.headlines;
     }
 
+    showHeadlinesByTag (tagname) {
+        let tags = this.getTags();
+        let visibleHadlines = tags.getTag(tagname);
+
+        if (tagname != '') {
+            for (const headlineId of Object.keys(this.headlines)) {
+                console.log(headlineId, visibleHadlines);
+
+                if (!this._isHeadlineVisibleForTag(headlineId, visibleHadlines)) {
+                    this.headlines[headlineId].visible = false;
+                } else {
+                    this.headlines[headlineId].visible = true; 
+                }
+            } 
+        } else  {
+            for (const headlineId of Object.keys(this.headlines)) {
+                console.log(headlineId, visibleHadlines);
+                this.headlines[headlineId].visible = true; 
+            }
+        }
+
+        console.log(tagname, this.headlines);
+
+        return this;
+    }
+
+    _isHeadlineVisibleForTag (headlineId, headlineIds) {
+        for (let i = 0; i < headlineIds.length; i++) {
+            if (headlineIds[i] == headlineId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     getTags () {
         return this.tags;
     }
 
-    transformData (data) {
+    _transformData (data) {
         let headlines = {};
 
         for (let i = 0; i < data.length; i++) {

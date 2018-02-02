@@ -4,7 +4,8 @@ import Config from '../../commons/config/config.js';
 import Headlines from '../../commons/helpers/Headlines.js';
 let defaultState = {
     headlines: new Headlines([]),
-    config: new Config('production')
+    config: new Config('production'),
+    refreshHeadlines: ''
 };
 
 export default function(state = defaultState, action) {
@@ -20,7 +21,8 @@ export default function(state = defaultState, action) {
         case SET_HEADLINES: {
             return {
                 ...state,
-                headlines: action.payload
+                headlines: action.payload,
+                refreshHeadlines: String(Math.random())
             };
         }
 

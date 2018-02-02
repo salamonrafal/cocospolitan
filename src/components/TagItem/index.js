@@ -7,7 +7,7 @@ import Style from './tagitem.scss';
 class TagItem extends Component {
     render() {
         let {tagIndex, tag, isLast, headlines, onClickTagItem, activeTag} = this.props;
-        let activeClassName = '';
+        let activeClassName = '';        
 
         if (activeTag === tag.tagname) {
             activeClassName = ' selected'
@@ -15,7 +15,10 @@ class TagItem extends Component {
 
         return (
             <li key={tagIndex} className={'taglist-item' + activeClassName}>
-                <a href="#" onClick={() => onClickTagItem(tag.tagname, [])}>#{tag.tagname}</a> 
+                <a href="#" onClick={() => {
+                    let changedHeadlines = headlines.showHeadlinesByTag(tag.tagname)
+                    onClickTagItem(tag.tagname, changedHeadlines)
+                }}>#{tag.tagname}</a> 
                 {!isLast &&
                     <span className={'item-separator'}> | </span>
                 }

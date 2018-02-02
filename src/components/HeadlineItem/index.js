@@ -6,10 +6,17 @@ import Style from './headlineitem.scss';
 
 class HeadlineItem extends Component {
     render() {
-        let {id, tags, visible, children} = this.props;
-
+        let {id, tags, visible, children, refreshHeadlines} = this.props;
+        let classNameVisible = ''
+        
+        if (!visible) { 
+            classNameVisible = ' hide';
+        } 
+        
+        console.log(visible, classNameVisible);
+        
         return (
-            <div className={'headline-item'}>
+            <div className={'headline-item' + classNameVisible} key={refreshHeadlines}>
                 <div className={'headline-row'}>
                     <div className={'headline-item-content'}>
                         {this.props.children}
@@ -19,7 +26,6 @@ class HeadlineItem extends Component {
                 <div className={'headline-row'}>
                     <div className={'headline-item-bottom'}>
                         {tags.map((tags, i) => <span key={i} className={'tags'}>#{tags}</span> )}
-                        
                     </div>
                 </div>
             </div>

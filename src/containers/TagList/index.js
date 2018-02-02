@@ -5,6 +5,7 @@ import axios from 'axios';
 import Style from './taglist.scss';
 
 import Tags from '../../components/Tags';
+
 import { selectTag } from './actions.js';
 
 
@@ -28,6 +29,7 @@ class TagList extends Component {
                     headlines={this.props.headlines}
                     onClickTagItem={this.props.onClickSelectTag}  
                     activeTag={this.props.activeTag}
+                    refreshHeadlines={this.props.refreshHeadlines}
                 />
             </div>
         );
@@ -39,7 +41,8 @@ function mapStateToProps(state, ownProps) {
     return {
         config: state.app.config,
         headlines: state.app.headlines,
-        activeTag: state.tagList.activeTag
+        activeTag: state.tagList.activeTag,
+        refreshHeadlines: state.app.refreshHeadlines
     };
 }
 

@@ -5,6 +5,7 @@
     margin: 0px auto;
     text-align: left;
     color: #FFF;
+    position: relative;
 }
 
 .taglist-items {
@@ -12,6 +13,8 @@
     list-style: none;
     padding: 5px;
     margin: 0px auto;
+    position: relative;
+    width: 100%;
 
     li:first-child {
         margin-left: 25px;

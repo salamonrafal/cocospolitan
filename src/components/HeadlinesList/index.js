@@ -5,7 +5,8 @@ import HeadlineItem from "../HeadlineItem";
 
 class HeadlinesList extends Component {
     render() {
-        let {headlines} = this.props;
+        let {headlines, refreshHeadlines, activeTag} = this.props;
+        headlines.showHeadlinesByTag(activeTag);
         let headlinesData = headlines.getAll();
 
         return (
@@ -15,6 +16,7 @@ class HeadlinesList extends Component {
                     tags={headlinesData[key].tags} 
                     visible={headlinesData[key].visible}
                     key={headlinesData[key].id}
+                    refreshHeadlines={refreshHeadlines} 
                 >
                     {HtmlReactParser(headlinesData[key].content)}
                 </HeadlineItem>
