@@ -3,6 +3,7 @@ import Style from './general.scss';
 import HeaderLayout from '../Header';
 import TagList  from '../../../containers/TagList';
 import HeadlinesList from '../../HeadlinesList';
+import MagazinesGallery from "../../../containers/MagazinesGallery";
 
 
 class LayoutGeneral extends Component {
@@ -25,7 +26,7 @@ class LayoutGeneral extends Component {
                         </div>
                         
                         <div className={'container-right-column'}>
-
+                            <MagazinesGallery />
                         </div>
 
                     </div>

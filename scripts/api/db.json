@@ -41,5 +41,19 @@
             "tags": [ "Rafcio"],
             "visible": true
         }
-    ]
+    ],
+
+    "magazines": {
+        "0": {
+            "image_full": "/uploads/magazine/cocospolitan_1.png",
+            "image_mini": "/uploads/magazine/cocospolitan_1_mini.png",
+            "caption": "Numer #1"
+        },
+
+        "1": {
+            "image_full": "/uploads/magazine/cocospolitan_2.png",
+            "image_mini": "/uploads/magazine/cocospolitan_2_mini.png",
+            "caption": "Numer #2"
+        }
+    } 
 }

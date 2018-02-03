@@ -13,8 +13,6 @@ class HeadlineItem extends Component {
             classNameVisible = ' hide';
         } 
         
-        console.log(visible, classNameVisible);
-        
         return (
             <div className={'headline-item' + classNameVisible} key={refreshHeadlines}>
                 <div className={'headline-row'}>

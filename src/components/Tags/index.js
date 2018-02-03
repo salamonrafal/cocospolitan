@@ -11,8 +11,6 @@ class Tags extends Component {
         let tags = this.props.tags.getAll();
         let len = tags.length;
 
-        console.log(this.props);
-
         return (
             <div className={'taglist-container'}>
                 <ul className={'taglist-items'}>

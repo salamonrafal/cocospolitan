@@ -21,8 +21,6 @@ class Headlines {
 
         if (tagname != '') {
             for (const headlineId of Object.keys(this.headlines)) {
-                console.log(headlineId, visibleHadlines);
-
                 if (!this._isHeadlineVisibleForTag(headlineId, visibleHadlines)) {
                     this.headlines[headlineId].visible = false;
                 } else {
@@ -31,12 +29,9 @@ class Headlines {
             } 
         } else  {
             for (const headlineId of Object.keys(this.headlines)) {
-                console.log(headlineId, visibleHadlines);
                 this.headlines[headlineId].visible = true; 
             }
         }
-
-        console.log(tagname, this.headlines);
 
         return this;
     }
