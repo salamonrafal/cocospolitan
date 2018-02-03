@@ -1,7 +1,31 @@
 .container {
     display: block;
+    max-width: 100%;
+    margin: 0px auto;
 }
 
 .container-header, .container-body, .container-footer {
     display: block;
+}
+
+.container-header {
+    background-color: #ED037C
+}
+
+
+.column-wrapper {
+    width: 800px;
+    margin: 0px auto;
+    overflow: auto;
+}
+
+.container-left-column {
+    width: 600px;
+    float: left;
+}
+
+.container-right-column {
+    width: 200px;
+    float: right;
+    background-color: #E9E9E9;
 }

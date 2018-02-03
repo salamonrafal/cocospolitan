@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
+const WebpackCleanupPlugin = require ('webpack-cleanup-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: "/css/[name].css",
@@ -41,7 +42,11 @@ module.exports = {
             fallback: 'style-loader',
             use: [
               {
-                loader: "css-loader" // translates CSS into CommonJS
+                loader: "css-loader",
+                options: {
+                  minimize: false,
+                  sourceMap: true
+                } // translates CSS into CommonJS
               }, 
               {
                 loader: "sass-loader" // compiles Sass to CSS
@@ -77,6 +82,16 @@ module.exports = {
   },
 
   plugins: [
-    extractSass
+    extractSass,
+
+    new WebpackCleanupPlugin({
+      preview: true,
+      exclude: ['css/*']
+    }),
+
+    new webpack.DefinePlugin({
+      '__ENV__': JSON.stringify('develop'),
+      'process.env.NODE_ENV': JSON.stringify('develop'),
+    })
   ]
 }

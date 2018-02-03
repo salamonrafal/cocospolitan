@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
-import appReducers from '../../containers/App/reducers';
+import AppReducers from '../../containers/App/reducers';
+import TagListReducers from '../../containers/TagList/reducers';
+import MagazinesGalleryReducers from '../../containers/MagazinesGallery/reducers';
 
 export const makeRootReducer = () => {
     return combineReducers({
-        appReducers
+        app: AppReducers,
+        tagList: TagListReducers,
+        magazinesGallery: MagazinesGalleryReducers
     })
 }
 

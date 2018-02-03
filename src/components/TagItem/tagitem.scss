@@ -1,0 +1,26 @@
+
+.taglist-item.selected {
+    a {
+        color: #ED037C;
+    }
+}
+
+.taglist-item {
+    a {
+        font-size: 14px;
+        color: #FFF;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ED037C;
+    }
+
+    .item-separator {
+        font-weight: normal;
+        font-size: 14px;
+        font-family: monospace;
+    }
+}

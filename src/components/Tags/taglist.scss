@@ -1,0 +1,28 @@
+
+.taglist-container {
+    width: 800px;
+    display: block;
+    margin: 0px auto;
+    text-align: left;
+    color: #FFF;
+    position: relative;
+}
+
+.taglist-items {
+    display: inline-block;
+    list-style: none;
+    padding: 5px;
+    margin: 0px auto;
+    position: relative;
+    width: 100%;
+
+    li:first-child {
+        margin-left: 25px;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0px;
+        padding: 0px 0px 0px 5px;
+    }
+}

@@ -1,0 +1,29 @@
+.button {
+    display: inline-block;
+    border: 1px solid #c6c6c6;
+    color: #ffffff;
+    border-radius: 2px;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.button.icon-32 {
+    min-width: 32px;
+    min-height: 32px;
+    max-height: 32px;
+    max-width: 32px;
+}
+
+.button.button-no-border {
+    border: none;
+}
+
+.button:hover{
+    background-color: #ED037C;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.button:hover.button-no-border {
+    border: none;
+}
