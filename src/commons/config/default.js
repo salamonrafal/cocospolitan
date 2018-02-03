@@ -2,12 +2,12 @@ let config = {
     services: {
         headlines: {
             // get:  "http://www.cocospolitan.pl/api"
-            get:  "http://localhost:3004/headlines"
+            get:  "http://www.cocospolitan.pl/api/headlines.json"
         },
 
         magazines: {
             // get:  "http://www.cocospolitan.pl/api"
-            get:  "http://localhost:3004/magazines"
+            get:  "http://www.cocospolitan.pl/api/magazines.json"
         },
     },
 
