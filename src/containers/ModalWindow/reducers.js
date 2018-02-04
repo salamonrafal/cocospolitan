@@ -1,4 +1,4 @@
-import { OPEN_MODAL } from './actions.js';
+import { OPEN_MODAL, REFRESH_CONTENT_MODAL } from './actions.js';
 
 let defaultState = {
     modalOpened: false,
@@ -16,6 +16,13 @@ export default function(state = defaultState, action) {
                 modalContent: action.payload.content,
                 modalTitle: action.payload.title,
                 modalFooter: action.payload.footer,
+            };
+        }
+
+        case REFRESH_CONTENT_MODAL: {
+            return {
+                ...state,
+                modalContent: action.payload.content,
             };
         }
         

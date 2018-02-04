@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import { setMagazines, changeVisibleItem } from './actions.js';
-import {openModalWindowAction} from '../ModalWindow/actions';
+import { openModalWindowAction, refreshModalWindowAction } from '../ModalWindow/actions';
 import MagazinesList from '../../components/MagazinesList';
 import { headerLabelMagazine } from '../../commons/labels/General';
 import Style from './style.scss';
 
 import ButtonBack from '../../components/Visual/Button/Back';
 import ButtonNext from '../../components/Visual/Button/Next';
+import MagazinesGalleryNavigation  from '../MagazinesGalleryNavigation';
 
 
 class MagazinesGallery extends Component {
@@ -26,7 +27,9 @@ class MagazinesGallery extends Component {
         try {
             axios.get(this.props.config.getConfig('services', 'magazines', 'get'))
             .then(res => {
-                this.props.setMagazinesData(res.data, this._getLastItemId(res.data), this._getLengthItems(res.data));
+                let lastItemId = this._getLastItemId(res.data);
+                let fullSizeImage = res.data[lastItemId].image_full;
+                this.props.setMagazinesData(res.data, lastItemId, this._getLengthItems(res.data), fullSizeImage);
             });    
         } catch (err) {
             console.error(err);
@@ -50,7 +53,6 @@ class MagazinesGallery extends Component {
 
     render () {
 
-        let preRenderedNavigation = this._preRenderedNavigation();
 
         return (
             <div className={'magazines-gallery-container'}>
@@ -60,78 +62,15 @@ class MagazinesGallery extends Component {
 
                 <MagazinesList 
                     data={this.props.magazinesData} 
-                    display={this.props.visible} 
+                    display={this.props.visibleMagazines} 
                     onClickImage={this.props.handleOpenModalWindowAction} 
-                    navigation={preRenderedNavigation} 
+                    handleRefreshModalWindowContent = {this.props.handleRefreshModalWindowContent}
+                    currentFullSizeImage={this.props.currentFullSizeImageMagazines}
                 />
 
-                {preRenderedNavigation}
+                <MagazinesGalleryNavigation />
                 
             </div>
-        );
-    }
-
-    _preRenderedNavigation () {
-        let isRenderNextButton = this.props.visible < this.props.length - 1;
-        let isRenderBackButton = this.props.visible > 0;
-        let preRenderedNextButton = this._renderButtonNext();
-        let preRenderedBackButton = this._renderButtonBack();
-        
-        if (!isRenderBackButton) {
-            preRenderedBackButton = '';
-        }
-
-        if (!isRenderNextButton) {
-            preRenderedNextButton = '';
-        }
-
-        return (
-            <div className={'magazines-gallery-navigation'}>
-                <div className={'left'}>
-                    {preRenderedBackButton}
-                </div>
-
-                <div className={'right'}>
-                    {preRenderedNextButton}
-                </div>
-            </div>
-        )
-    }
-    
-    _renderButtonNext () {
-        let args = {
-            itemId: this.props.visible + 1
-        }
-
-        return (
-            <ButtonNext 
-                withIcon={true} 
-                withText={false} 
-                iconWidth={32}
-                buttonSize='medium'
-                noBorder={true}
-                onClickFn={this.props.changeVisibleMagazine}
-                args={args}
-            />
-        );
-    }
-
-    _renderButtonBack () {
-
-        let args = {
-            itemId: this.props.visible - 1
-        }
-
-        return (
-            <ButtonBack 
-                withIcon={true} 
-                withText={false} 
-                iconWidth={32}
-                buttonSize='medium'
-                noBorder={true}
-                onClickFn={this.props.changeVisibleMagazine}
-                args={args}
-            />
         );
     }
 }
@@ -141,15 +80,16 @@ function mapStateToProps(state, ownProps) {
         config: state.app.config,
         activeTag: state.tagList.activeTag,
         magazinesData: state.magazinesGallery.magazinesData,
-        visible: state.magazinesGallery.visible,
-        length: state.magazinesGallery.length
+        visibleMagazines: state.magazinesGallery.visibleMagazines,
+        lengthMagazines: state.magazinesGallery.lengthMagazines,
+        currentFullSizeImageMagazines: state.magazinesGallery.currentFullSizeImageMagazines,
     };
 }
 
 function mapDispatchToProps(dispatch) {  
     return {
-        setMagazinesData(data, last, length) {
-            dispatch(setMagazines(data, last, length));
+        setMagazinesData(data, last, length, fullSizeImage) {
+            dispatch(setMagazines(data, last, length, fullSizeImage));
         },
 
         changeVisibleMagazine(args) {
@@ -158,6 +98,10 @@ function mapDispatchToProps(dispatch) {
 
         handleOpenModalWindowAction(isOPen, content, title, footer) {
             dispatch(openModalWindowAction(isOPen, content, title, footer));
+        },
+
+        handleRefreshModalWindowContent(content) {
+            dispatch(refreshModalWindowAction(content));
         }
     };
 }     

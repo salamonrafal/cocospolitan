@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Style from './style.scss';
 
-import { openModalWindowAction } from './actions.js';
+import { openModalWindowAction, refreshModalWindowAction } from './actions.js';
 
 
 class ModalWindow extends Component {
@@ -69,6 +69,10 @@ function mapDispatchToProps(dispatch) {
     return {
         openModalWindow(isOpen, content, title, footer) {
             dispatch(openModalWindowAction(isOpen, content, title, footer))
+        },
+
+        refreshModalWindowContent(content) {
+            dispatch(refreshModalWindowAction(content));
         }
     };
 }     
