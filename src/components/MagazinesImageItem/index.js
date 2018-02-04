@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 
 import Style from './style.scss';
 
+import MagazinesFullImage from '../MagazinesFullImage';
+import MagazinesMiniImage from '../MagazinesMiniImage';
+
 class MagazinesImageItem extends Component {
 
 
     _renderFullImage(imagePathFull, caption) {
         return (
-            <img src={imagePathFull} alt={caption} height="550px" />
+            <MagazinesFullImage imagePathFull={imagePathFull} caption={caption} height={'550px'} />
         );
     }
 
     render() {
-        let { imagePathMini, imagePathFull, caption, index, display, onClickImage, navigation } = this.props;
+        let { imagePathMini, imagePathFull, caption, index, display, onClickImage, navigation, currentFullSizeImage, handleRefreshModalWindowContent } = this.props;
         let classNameHide = ' hide';
 
         if (index == display) {
@@ -23,8 +26,18 @@ class MagazinesImageItem extends Component {
 
         return (
             <li className={'magazines-list-item' + classNameHide}>
-                <img src={imagePathMini} alt={caption} width={160} onClick={() => onClickImage(true, preRenderedFullImage, 'Okładki magazynów', '') }/><br />
-                <span className={'magazines-list-item-caption'}>{caption}</span>
+                <MagazinesMiniImage 
+                    imagePathMini={imagePathMini}
+                    caption={caption}
+                    width={'165px'}
+                    onClickImage={onClickImage}
+                    preRenderedFullImage={preRenderedFullImage}
+                    navigation={navigation}
+                />
+                <br />
+                <span className={'magazines-list-item-caption'}>
+                    {caption}
+                </span>
             </li>
         );
     }

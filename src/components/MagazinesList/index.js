@@ -5,7 +5,7 @@ import MagazinesImageItem from '../MagazinesImageItem';
 
 class MagazinesList extends Component {
     render() {
-        let { data, display, onClickImage, navigation } = this.props;
+        let { data, display, onClickImage, navigation, currentFullSizeImage, handleRefreshModalWindowContent } = this.props;
 
         return (
             <div className={'magazines-list-container'}>
@@ -20,6 +20,8 @@ class MagazinesList extends Component {
                             display={display}
                             onClickImage={onClickImage}
                             navigation={navigation}
+                            currentFullSizeImage={currentFullSizeImage}
+                            handleRefreshModalWindowContent={handleRefreshModalWindowContent}
                         /> 
                     )}
                 </ul>
