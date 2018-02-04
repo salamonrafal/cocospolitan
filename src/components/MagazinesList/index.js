@@ -5,7 +5,7 @@ import MagazinesImageItem from '../MagazinesImageItem';
 
 class MagazinesList extends Component {
     render() {
-        let { data, display } = this.props;
+        let { data, display, onClickImage, navigation } = this.props;
 
         return (
             <div className={'magazines-list-container'}>
@@ -18,6 +18,8 @@ class MagazinesList extends Component {
                             index={key}
                             key={key}
                             display={display}
+                            onClickImage={onClickImage}
+                            navigation={navigation}
                         /> 
                     )}
                 </ul>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import { setMagazines, changeVisibleItem } from './actions.js';
+import {openModalWindowAction} from '../ModalWindow/actions';
 import MagazinesList from '../../components/MagazinesList';
 import { headerLabelMagazine } from '../../commons/labels/General';
 import Style from './style.scss';
@@ -49,11 +50,33 @@ class MagazinesGallery extends Component {
 
     render () {
 
+        let preRenderedNavigation = this._preRenderedNavigation();
+
+        return (
+            <div className={'magazines-gallery-container'}>
+                <div className={'magazines-gallery-header'}>
+                    {headerLabelMagazine}
+                </div>
+
+                <MagazinesList 
+                    data={this.props.magazinesData} 
+                    display={this.props.visible} 
+                    onClickImage={this.props.handleOpenModalWindowAction} 
+                    navigation={preRenderedNavigation} 
+                />
+
+                {preRenderedNavigation}
+                
+            </div>
+        );
+    }
+
+    _preRenderedNavigation () {
         let isRenderNextButton = this.props.visible < this.props.length - 1;
         let isRenderBackButton = this.props.visible > 0;
         let preRenderedNextButton = this._renderButtonNext();
         let preRenderedBackButton = this._renderButtonBack();
-
+        
         if (!isRenderBackButton) {
             preRenderedBackButton = '';
         }
@@ -63,24 +86,16 @@ class MagazinesGallery extends Component {
         }
 
         return (
-            <div className={'magazines-gallery-container'}>
-                <div className={'magazines-gallery-header'}>
-                    {headerLabelMagazine}
+            <div className={'magazines-gallery-navigation'}>
+                <div className={'left'}>
+                    {preRenderedBackButton}
                 </div>
 
-                <MagazinesList data={this.props.magazinesData} display={this.props.visible} />
-
-                <div className={'magazines-gallery-navigation'}>
-                    <div className={'left'}>
-                        {preRenderedBackButton}
-                    </div>
-
-                    <div className={'right'}>
-                        {preRenderedNextButton}
-                    </div>
+                <div className={'right'}>
+                    {preRenderedNextButton}
                 </div>
             </div>
-        );
+        )
     }
     
     _renderButtonNext () {
@@ -127,7 +142,7 @@ function mapStateToProps(state, ownProps) {
         activeTag: state.tagList.activeTag,
         magazinesData: state.magazinesGallery.magazinesData,
         visible: state.magazinesGallery.visible,
-        length: state.magazinesGallery.length,
+        length: state.magazinesGallery.length
     };
 }
 
@@ -139,6 +154,10 @@ function mapDispatchToProps(dispatch) {
 
         changeVisibleMagazine(args) {
             dispatch(changeVisibleItem(args.itemId));
+        },
+
+        handleOpenModalWindowAction(isOPen, content, title, footer) {
+            dispatch(openModalWindowAction(isOPen, content, title, footer));
         }
     };
 }     

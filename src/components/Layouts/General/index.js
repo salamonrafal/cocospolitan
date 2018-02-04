@@ -4,6 +4,7 @@ import HeaderLayout from '../Header';
 import TagList  from '../../../containers/TagList';
 import HeadlinesList from '../../HeadlinesList';
 import MagazinesGallery from "../../../containers/MagazinesGallery";
+import ModalWindow from '../../../containers/ModalWindow';
 
 
 class LayoutGeneral extends Component {
@@ -11,6 +12,8 @@ class LayoutGeneral extends Component {
 
         return (
             <div className={'container'}>
+
+                <ModalWindow title={'Test modal'} />
             
                 <div className={'container-header'}>
                     <HeaderLayout headlines={this.props.headlines} />
