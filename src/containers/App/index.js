@@ -9,6 +9,7 @@ import {setHeadlines, setApplicationConfig } from './actions.js';
 import Config from '../../commons/config/config.js';
 import Headlines from '../../commons/helpers/Headlines.js';
 
+
 class App extends Component {
 
     constructor (props) {
